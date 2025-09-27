@@ -1,7 +1,7 @@
 import gradio as gr
 from gradio_functions import respond, stop_response, clear_chat
 
-with gr.Blocks(title="AI Teacher", css="""
+with gr.Blocks(title="AutoBot ChatBot", css="""
     .small-textbox textarea {
         min-height: 30px;
         max-height: 200px;
