@@ -3,4 +3,3 @@ langchain-google-genai
 python-dotenv
 gradio
 PyPDF2
-python-pptx
