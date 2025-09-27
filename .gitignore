@@ -18,6 +18,9 @@ tempCodeRunnerFile.py
 *.tmp
 *.temp
 
+# Gradio files
+.gradio/
+
 # OS files
 .DS_Store
 Thumbs.db
