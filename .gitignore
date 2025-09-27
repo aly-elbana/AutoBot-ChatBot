@@ -1,0 +1,23 @@
+# Environment files
+.env
+.venv
+
+# IDE files
+.idea/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Temporary files
+tempCodeRunnerFile.py
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
