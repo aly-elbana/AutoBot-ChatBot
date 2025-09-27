@@ -5,7 +5,8 @@ import os
 import time
 from config import get_llm
 from model_charac import system_prompt
-from file_handlers import pdf_to_text, ipynb_to_text, image_to_base64, read_text_file
+from file_handlers import (pdf_to_text, ipynb_to_text, image_to_base64, read_text_file, 
+                          csv_to_text, xml_to_text, get_file_type_info)
 
 
 def chat_with_teacher_streaming(message, history, file=None):
@@ -48,6 +49,8 @@ def chat_with_teacher_streaming(message, history, file=None):
         # Handle file uploads
         if file:
             ext = os.path.splitext(file)[1].lower()
+            icon, file_type = get_file_type_info(file)
+            
             if ext in [".png", ".jpg", ".jpeg"]:
                 # Handle image files
                 b64data, mime = image_to_base64(file)
@@ -57,22 +60,32 @@ def chat_with_teacher_streaming(message, history, file=None):
                     "mime_type": mime,
                     "data": b64data
                 })
-                history.append({"role": "user", "content": f"{message} 🖼️ (with image)"})
+                history.append({"role": "user", "content": f"{message} {icon} (with {file_type})"})
             elif ext == ".pdf":
                 # Handle PDF files
                 pdf_text = pdf_to_text(file)
-                user_content.append({"type": "text", "text": f"\n📄 PDF Content:\n{pdf_text}"})
-                history.append({"role": "user", "content": f"{message} 📄 (with PDF)"})
+                user_content.append({"type": "text", "text": f"\n{icon} {file_type} Content:\n{pdf_text}"})
+                history.append({"role": "user", "content": f"{message} {icon} (with {file_type})"})
             elif ext == ".ipynb":
                 # Handle Jupyter notebooks
                 nb_text = ipynb_to_text(file)
-                user_content.append({"type": "text", "text": f"\n📓 Notebook Content:\n{nb_text}"})
-                history.append({"role": "user", "content": f"{message} 📓 (with ipynb)"})
+                user_content.append({"type": "text", "text": f"\n{icon} {file_type} Content:\n{nb_text}"})
+                history.append({"role": "user", "content": f"{message} {icon} (with {file_type})"})
+            elif ext == ".csv":
+                # Handle CSV files
+                csv_text = csv_to_text(file)
+                user_content.append({"type": "text", "text": f"\n{icon} {file_type} Content:\n{csv_text}"})
+                history.append({"role": "user", "content": f"{message} {icon} (with {file_type})"})
+            elif ext == ".xml":
+                # Handle XML files
+                xml_text = xml_to_text(file)
+                user_content.append({"type": "text", "text": f"\n{icon} {file_type} Content:\n{xml_text}"})
+                history.append({"role": "user", "content": f"{message} {icon} (with {file_type})"})
             else:
-                # Handle other text files
+                # Handle other text files (code files, scripts, configs, etc.)
                 file_text = read_text_file(file)
-                user_content.append({"type": "text", "text": f"\n📄 File Content:\n{file_text}"})
-                history.append({"role": "user", "content": f"{message} 📄 (with file)"})
+                user_content.append({"type": "text", "text": f"\n{icon} {file_type} Content:\n{file_text}"})
+                history.append({"role": "user", "content": f"{message} {icon} (with {file_type})"})
         else:
             history.append({"role": "user", "content": message})
 

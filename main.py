@@ -35,12 +35,17 @@ with gr.Blocks(title="AutoBot ChatBot", css="""
                 show_label=False,
                 elem_classes="small-textbox",
             )
-        with gr.Column(scale=1.5):
-            with gr.Row(scale=1.5):
+        with gr.Column(scale=2):
+            with gr.Row(scale=2):
                 with gr.Column(scale=1, min_width=120):
                     file_in = gr.File(
                         type="filepath", 
-                        file_types=[".png", ".jpg", ".jpeg", ".pdf", ".txt", ".py", ".json", ".yaml", ".ipynb"],
+                        file_types=[".png", ".jpg", ".jpeg", ".pdf", ".txt", ".py", ".json", ".yaml", ".ipynb", 
+                                   ".js", ".jsx", ".ts", ".tsx", ".html", ".css", ".scss", ".sass", ".less",
+                                   ".cpp", ".c", ".h", ".hpp", ".cc", ".cxx", ".java", ".kt", ".scala",
+                                   ".php", ".rb", ".go", ".rs", ".swift", ".dart", ".r", ".m", ".mm",
+                                   ".cs", ".csx", ".xml", ".csv", ".sql", ".md", ".rst", ".tex", ".log", ".ini", ".cfg",
+                                   ".sh", ".bash", ".zsh", ".fish", ".ps1", ".bat", ".cmd"],
                         label="Upload", 
                         height=40,
                         
