@@ -12,7 +12,7 @@ A sophisticated AI-powered chatbot with multimodal capabilities, supporting text
 ├── file_handlers.py       # File processing utilities
 ├── model_charac.py        # AI character/prompt configuration
 ├── requirements.txt       # Python dependencies
-└── README.md             # This file
+└── README.md             # This file you are reading
 ```
 
 ## Features
