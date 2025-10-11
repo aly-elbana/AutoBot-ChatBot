@@ -5,14 +5,14 @@ A sophisticated AI-powered chatbot with multimodal capabilities, supporting text
 ## Project Structure
 
 ```
-├── main.py                 # Main application entry point
+├── main.py                # Main application entry point
 ├── config.py              # Configuration and LLM setup
 ├── functions.py           # Core chat functionality
 ├── gradio_functions.py    # Gradio interface handlers
 ├── file_handlers.py       # File processing utilities
 ├── model_charac.py        # AI character/prompt configuration
 ├── requirements.txt       # Python dependencies
-└── README.md             # This file you are reading
+└── README.md              # This file
 ```
 
 ## Features
